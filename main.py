@@ -40,3 +40,12 @@ def get_spin(rows, cols, symbols):
     columns.append(column)
 
   return columns
+
+def print_spin(columns):
+  for row in range(len(columns[0])):
+    for i, column in enumerate(columns):
+      if i != len(columns) - 1:
+        print(column[row], end=" | ")
+      else:
+        print(column[row], end="")
+    print()
