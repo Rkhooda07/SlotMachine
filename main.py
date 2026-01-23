@@ -103,3 +103,23 @@ def get_bet():
     else:
       print("Enter a valid amount of bet.")
   return bet
+
+def spin(balance):
+  lines = get_lines()
+  while True:
+    bet = get_bet()
+    total_bet = bet * lines
+
+    if total_bet > balance:
+      print(f"You do not have enough to bet that amount, your current balance is ${balance}")
+    else:
+      break
+
+  print(f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}")
+
+  slots = get_spin(ROWS, COLS, symbol_count)
+  print_spin(slots)
+  winnings, winning_lines = check_win(slots, lines, bet, symbol_value)
+  print(f"You won ${winnings}.")
+  print(f"You won on line :", *winning_lines)
+  return winnings - total_bet
