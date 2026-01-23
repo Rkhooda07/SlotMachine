@@ -64,3 +64,42 @@ def check_win(columns, lines, bet , values):
       winning_lines.append(line + 1)
 
   return winnings, winning_lines
+
+def deposit():
+  while True:
+    amount = input("What would you like to deposit? $")
+    if amount.isdigit():
+      amount = int(amount)
+      if amount > 0:
+        break
+      else:
+        print("Amount must be greater than 0")
+    else:
+      print("Enter valid amount")
+  return amount
+
+def get_lines():
+  while True:
+    lines = input(f"Enter the number of lines (1-{MAX_LINES}): ")
+    if lines.isdigit():
+      lines = int(lines)
+      if 1 <= lines <= MAX_LINES:
+        break
+      else:
+        print("Lines must be between 1-3")
+    else:
+      print("Enter valid no. of lines")
+  return lines
+
+def get_bet():
+  while True:
+    bet = input("What would you like to bet on each line? $")
+    if bet.isdigit():
+      bet = int(bet)
+      if MIN_BET <= bet <= MAX_BET:
+        break
+      else:
+        print(f"Bet amount must be between ${MIN_BET} - {MAX_BET}")
+    else:
+      print("Enter a valid amount of bet.")
+  return bet
