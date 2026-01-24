@@ -123,3 +123,16 @@ def spin(balance):
   print(f"You won ${winnings}.")
   print(f"You won on line :", *winning_lines)
   return winnings - total_bet
+
+def main():
+  balance = deposit()
+  while True:
+    print(f"Current balance : ${balance}")
+    answer = input("Press enter to play (q to quit).")
+    if answer == "q":
+      break
+    balance += spin(balance)
+  
+  print(f"You left with ${balance}.")
+
+main()
