@@ -26,3 +26,9 @@ symbol_value = {
     " 7": 3,
     "🎱": 2
 }
+
+class SlotMachine(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.balance = 0
+        self.initUI()
