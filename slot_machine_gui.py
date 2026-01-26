@@ -41,3 +41,10 @@ class SlotMachine(QMainWindow):
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout = QVBoxLayout(central_widget)
+
+        # Balance display
+        self.balance_label = QLabel(f'Balance: ${self.balance}')
+        self.balance_label.setAlignment(Qt.AlignCenter)
+        self.balance_label.setFont(QFont('Arial', 16))
+        self.balance_label.setStyleSheet("color: #00ff00; padding: 10px;")
+        layout.addWidget(self.balance_label)
