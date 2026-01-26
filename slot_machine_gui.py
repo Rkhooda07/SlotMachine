@@ -32,3 +32,12 @@ class SlotMachine(QMainWindow):
         super().__init__()
         self.balance = 0
         self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle('Slot Machine')
+        self.setStyleSheet("background-color: #2b2b2b; color: white;")
+        
+        # Create central widget and layout
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        layout = QVBoxLayout(central_widget)
