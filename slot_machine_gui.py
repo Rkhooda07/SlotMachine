@@ -67,3 +67,24 @@ class SlotMachine(QMainWindow):
         grid_widget = QWidget()
         grid_widget.setLayout(self.slot_grid)
         layout.addWidget(grid_widget)
+
+        # Controls
+        controls_layout = QHBoxLayout()
+        
+        # Lines selection
+        self.lines_spin = QSpinBox()
+        self.lines_spin.setRange(1, MAX_LINES)
+        self.lines_spin.setValue(1)
+        self.lines_spin.setStyleSheet("background-color: #3b3b3b; padding: 5px;")
+        controls_layout.addWidget(QLabel("Lines:"))
+        controls_layout.addWidget(self.lines_spin)
+        
+        # Bet amount selection
+        self.bet_spin = QSpinBox()
+        self.bet_spin.setRange(MIN_BET, MAX_BET)
+        self.bet_spin.setValue(MIN_BET)
+        self.bet_spin.setStyleSheet("background-color: #3b3b3b; padding: 5px;")
+        controls_layout.addWidget(QLabel("Bet per line:"))
+        controls_layout.addWidget(self.bet_spin)
+        
+        layout.addLayout(controls_layout)
