@@ -128,3 +128,29 @@ class SlotMachine(QMainWindow):
         button_layout.addWidget(self.deposit_btn)
         button_layout.addWidget(self.spin_btn)
         layout.addLayout(button_layout)
+
+        # Result label
+        self.result_label = QLabel("")
+        self.result_label.setAlignment(Qt.AlignCenter)
+        self.result_label.setStyleSheet("color: #ffd700; padding: 10px;")
+        layout.addWidget(self.result_label)
+        
+        self.setMinimumSize(400, 500)
+        self.center()
+        
+    def center(self):
+        screen = QApplication.desktop().screenGeometry()
+        size = self.geometry()
+        self.move((screen.width() - size.width()) // 2,
+                 (screen.height() - size.height()) // 2)
+        
+    def deposit(self):
+        amount, ok = QInputDialog.getInt(
+            self, 'Deposit',
+            'Enter deposit amount:',
+            value=100, min=1, max=10000
+        )
+        if ok:
+            self.balance += amount
+            self.balance_label.setText(f'Balance: ${self.balance}')
+            self.result_label.setText(f'Deposited ${amount} successfully!')
