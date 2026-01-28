@@ -154,3 +154,29 @@ class SlotMachine(QMainWindow):
             self.balance += amount
             self.balance_label.setText(f'Balance: ${self.balance}')
             self.result_label.setText(f'Deposited ${amount} successfully!')
+
+    def get_spin(self):
+        all_symbols = []
+        for symbol, count in symbol_count.items():
+            all_symbols.extend([symbol] * count)
+
+        columns = []
+        for _ in range(COLS):
+            column = random.sample(all_symbols, ROWS)
+            columns.append(column)
+
+        return columns
+    
+    def check_win(self, columns, lines, bet):
+        winnings = 0
+        winning_lines = []
+        for line in range(lines):
+            symbol = columns[0][line]
+            for column in columns:
+                symbol_to_check = column[line]
+                if symbol != symbol_to_check:
+                    break
+            else:
+                winnings += symbol_value[symbol] * bet
+                winning_lines.append(line + 1)
+        return winnings, winning_lines
