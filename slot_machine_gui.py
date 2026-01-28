@@ -180,3 +180,32 @@ class SlotMachine(QMainWindow):
                 winnings += symbol_value[symbol] * bet
                 winning_lines.append(line + 1)
         return winnings, winning_lines
+    
+    def spin(self):
+        lines = self.lines_spin.value()
+        bet = self.bet_spin.value()
+        total_bet = bet * lines
+        
+        if total_bet > self.balance:
+            QMessageBox.warning(self, 'Insufficient Funds',
+                              f'You need ${total_bet} to play. Current balance: ${self.balance}')
+            return
+        
+        self.balance -= total_bet
+        slots = self.get_spin()
+        
+        # Update the display with symbols
+        for i in range(ROWS):
+            for j in range(COLS):
+                self.slot_labels[i][j].setText(slots[j][i])
+                
+        winnings, winning_lines = self.check_win(slots, lines, bet)
+        self.balance += winnings
+        
+        # Update balance and result
+        self.balance_label.setText(f'Balance: ${self.balance}')
+        if winning_lines:
+            self.result_label.setText(
+                f'You won ${winnings} on lines {", ".join(map(str, winning_lines))}!')
+        else:
+            self.result_label.setText('Try again!')
