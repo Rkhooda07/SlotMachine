@@ -48,3 +48,22 @@ class SlotMachine(QMainWindow):
         self.balance_label.setFont(QFont('Arial', 16))
         self.balance_label.setStyleSheet("color: #00ff00; padding: 10px;")
         layout.addWidget(self.balance_label)
+
+        # Slot display grid
+        self.slot_grid = QGridLayout()
+        self.slot_labels = []
+        slots = self.get_spin()  # Get initial random symbols
+        for i in range(ROWS):
+            row_labels = []
+            for j in range(COLS):
+                label = QLabel(slots[j][i])  # Set initial random symbol
+                label.setFont(QFont('Arial', 24))
+                label.setAlignment(Qt.AlignCenter)
+                label.setStyleSheet("background-color: #3b3b3b; border-radius: 10px; padding: 20px;")
+                self.slot_grid.addWidget(label, i, j)
+                row_labels.append(label)
+            self.slot_labels.append(row_labels)
+        
+        grid_widget = QWidget()
+        grid_widget.setLayout(self.slot_grid)
+        layout.addWidget(grid_widget)
