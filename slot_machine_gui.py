@@ -88,3 +88,43 @@ class SlotMachine(QMainWindow):
         controls_layout.addWidget(self.bet_spin)
         
         layout.addLayout(controls_layout)
+
+        # Buttons
+        button_layout = QHBoxLayout()
+        
+        self.deposit_btn = QPushButton('Deposit')
+        self.deposit_btn.clicked.connect(self.deposit)
+        self.deposit_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+        """)
+        self.deposit_btn.setCursor(Qt.PointingHandCursor)
+
+        self.spin_btn = QPushButton('SPIN')
+        self.spin_btn.clicked.connect(self.spin)
+        self.spin_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #f44336;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #da190b;
+            }
+        """)
+        self.spin_btn.setCursor(Qt.PointingHandCursor)
+        
+
+        button_layout.addWidget(self.deposit_btn)
+        button_layout.addWidget(self.spin_btn)
+        layout.addLayout(button_layout)
