@@ -1,31 +1,36 @@
-# 🎰 Slot Machine Game (Python)
+# 🎰 Slot Machine Game
 
-A slot machine game built in Python featuring:
-- A **terminal-based version**
-- A **GUI version built with PyQt5**
+A premium slot machine game experience available in both Python and Web versions.
 
-This project demonstrates core Python logic, clean code structure, and a graphical user interface.
+## 🌐 Live Preview
+[**Click here to play the Web Version!**](https://rkhooda07.github.io/SlotMachine/)
 
 ---
 
 ## ✨ Features
-
-- Adjustable bet amount and number of lines
-- Randomized slot spins
-- Balance tracking
-- Win detection and payout calculation
-- Interactive GUI using PyQt5
-- Clean, feature-based Git commit history
+- **Web Version**: Premium casino aesthetics with glassmorphism and animations.
+- **Python Version**: 
+  - Terminal-based version for core logic.
+  - Interactive GUI version built with PyQt5.
+- Adjustable bet amount and number of lines.
+- Randomized slot spins with win detection.
+- Real-time balance tracking and payout calculation.
 
 ---
 
 ## 📁 Project Structure
+```text
 Slot Machine/
-├── main.py                # Terminal-based slot machine
-├── slot_machine_gui.py    # PyQt5 GUI version
+├── index.html             # Premium Web version entry point
+├── script.js              # Game logic (Web)
+├── style.css              # Game styling (Web)
+├── casino_background.png  # UI assets
+├── main.py                # Terminal-based slot machine (Python)
+├── slot_machine_gui.py    # PyQt5 GUI version (Python)
 ├── requirements.txt       # Project dependencies
 ├── .gitignore
 └── README.md
+```
 
 ---
 
