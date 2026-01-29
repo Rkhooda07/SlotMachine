@@ -3,7 +3,7 @@
 A premium slot machine game experience available in both Python and Web versions.
 
 ## 🌐 Live Preview
-[**Click here to play the Web Version!**](https://rkhooda07.github.io/SlotMachine/)
+[**Click here to play the Web Version!**](https://slot-machine-casino.vercel.app/)
 
 ---
 
