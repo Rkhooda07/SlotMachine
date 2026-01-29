@@ -1,0 +1,243 @@
+:root {
+    --primary-gold: #ffd700;
+    --secondary-gold: #b38b00;
+    --neon-purple: #9d00ff;
+    --neon-pink: #ff00ff;
+    --dark-bg: #0a0a0a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --success-green: #00ff88;
+    --danger-red: #ff4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('casino_background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#app {
+    width: 100%;
+    max-width: 450px;
+    padding: 10px;
+    perspective: 1000px;
+}
+
+.slot-machine {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 
+                0 0 30px rgba(157, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.slot-machine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.balance-container {
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+.balance-label {
+    font-size: 0.8rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.balance-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-green);
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.slot-reel {
+    height: 80px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.1s;
+}
+
+.slot-reel.spinning {
+    animation: bounce 0.1s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(-2px); }
+    to { transform: translateY(2px); }
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+select, input {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+select:focus, input:focus {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(157, 0, 255, 0.3);
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 10px;
+}
+
+button {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#spin-btn {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+    color: white;
+    box-shadow: 0 10px 20px rgba(157, 0, 255, 0.3);
+}
+
+#spin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(157, 0, 255, 0.5);
+}
+
+#spin-btn:active {
+    transform: translateY(1px);
+}
+
+#spin-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#deposit-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: white;
+}
+
+#deposit-btn:hover {
+    background: var(--glass-bg);
+    border-color: var(--success-green);
+    color: var(--success-green);
+}
+
+.message-display {
+    text-align: center;
+    min-height: 30px;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.win-message {
+    color: var(--primary-gold);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.8; }
+    to { transform: scale(1.05); opacity: 1; }
+}
+
+/* Custom Scrollbar for numeric input in some browsers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
